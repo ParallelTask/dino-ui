@@ -9,15 +9,31 @@
 
 <body>
     <div id="app">
-        <div component="number-input" state='{"value" : 45}'></div>
-        <div component="model-bind"></div>
-        <div>
-            <h2>You need to work super hard</h2>
-            <div component="number-input" state='{"value" : 22}'></div>
+        <div di-component="number-input" di-data='{ "placeHolder" : "Numbers only" }' di-selector="num-input">
         </div>
-        <div component="input-bind"></div>
+        <div di-component="post-search" di-data='{ "search": "Get Posts", "placeHolder": "Enter Keyword"  }'></div>
+        <div>
+            <h2>yay!</h2>
+            <div di-component="number-input" di-data='{ "placeHolder" : "Numbers only" }' di-selector="least"></div>
+        </div>
     </div>
 </body>
-<script src="index.js"></script>
+<script src="rxjs.js"></script>
+<script src="dino-ui.js"></script>
+<script src="NumberInput.js"></script>
+<script src="PostSearch.js"></script>
+<script src="Post.js"></script>
+<script>
+    dinoUI.render(document.getElementById('app'));
+    dinoUI
+        .onSelector("num-input")
+        .subscribe((e) => {
+            switch (e.action) {
+                case 'MODEL_UPDATE':
+                    console.log(e.payload)
+                    break;
+            }
+        });
+</script>
 
 </html>

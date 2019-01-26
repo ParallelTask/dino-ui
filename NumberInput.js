@@ -1,41 +1,3 @@
-# dino-ui
-Front end component library
-
-### How to
-- html file
-```
-<body>
-    <div id="app">
-        <div
-            di-component="number-input"
-            di-data='{ "placeHolder" : "Numbers only" }'
-            di-selector="num-input">
-        </div>
-    </div>
-</body>
-<!-- Predefined libraries to use -->
-<script src="rxjs.js"></script>
-<script src="dino-ui.js"></script>
-<!-- Component file -->
-<script src="NumberInput.js"></script>
-<script>
-    // Set the scope of dino-ui and render it to DOM.
-    dinoUI.render(document.getElementById('app'));
-    // selector should be the one defined on the component i.e. di-selector="num-input" as above
-    dinoUI
-        .onSelector('num-input')
-        .subscribe(function(e) {
-            switch (e.action) {
-                case 'MODEL_UPDATE':
-                    console.log(e.payload)
-                    break;
-            }
-        });
-</script>
-</body>
-```
-- NumberInput.js
-```
 dinoUI.component('number-input', function (data, node, selector) {
     return {
         template: function () {
@@ -74,4 +36,3 @@ dinoUI.component('number-input', function (data, node, selector) {
         }
     };
 });
-```
